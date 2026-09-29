@@ -10,7 +10,14 @@
 # of "Ticker: Company -- $Price"
 
 class Stock:
-    pass
+    def __init__(self, tickersymbol, price, company):
+        self.tickersymbol = tickersymbol
+        self.price = price
+        self.company = company
+
+    def get_description(self):
+        output = f"{self.tickersymbol}: {self.company} -- ${self.price}"
+        return output
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 msft = Stock("MSFT", 342.0, "Microsoft Corp")

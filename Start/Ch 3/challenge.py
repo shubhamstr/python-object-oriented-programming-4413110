@@ -23,6 +23,36 @@ class Stock(Asset):
         self.company = company
         self.ticker = ticker
 
+    def __str__(self):
+        return f"company={self.company}"
+
+    def __eq__(self, value):
+        if not isinstance(value, Stock):
+            raise ValueError("can't compare stock to a non-stock")
+        return (self.ticker == value.ticker and 
+        self.price == value.price and 
+        self.company == value.company)
+
+    def __gt__(self, value):
+        if not isinstance(value, Stock):
+            raise ValueError("can't compare stock to a non-stock")
+        return self.price > value.price
+
+    def __lt__(self, value):
+        if not isinstance(value, Stock):
+            raise ValueError("can't compare stock to a non-stock")
+        return self.price < value.price
+
+    def __ge__(self, value):
+        if not isinstance(value, Stock):
+            raise ValueError("can't compare stock to a non-stock")
+        return self.price >= value.price
+
+    def __le__(self, value):
+        if not isinstance(value, Stock):
+            raise ValueError("can't compare stock to a non-stock")
+        return self.price <= value.price
+
 
 class Bond(Asset):
     def __init__(self, price, description, duration, yieldamt):
@@ -30,6 +60,37 @@ class Bond(Asset):
         self.description = description
         self.duration = duration
         self.yieldamt = yieldamt
+
+    def __str__(self):
+        return f"description={self.description}"
+
+    def __eq__(self, value):
+        if not isinstance(value, Bond):
+            raise ValueError("can't compare bond to a non-bond")
+        return (self.description == value.description and 
+        self.duration == value.duration and 
+        self.yieldamt == value.yieldamt and 
+        self.price == value.price)
+
+    def __gt__(self, value):
+        if not isinstance(value, Bond):
+            raise ValueError("can't compare bond to a non-bond")
+        return self.price > value.price
+
+    def __lt__(self, value):
+        if not isinstance(value, Bond):
+            raise ValueError("can't compare bond to a non-bond")
+        return self.price < value.price
+
+    def __ge__(self, value):
+        if not isinstance(value, Bond):
+            raise ValueError("can't compare bond to a non-bond")
+        return self.price >= value.price
+
+    def __le__(self, value):
+        if not isinstance(value, Bond):
+            raise ValueError("can't compare bond to a non-bond")
+        return self.price <= value.price
 
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
